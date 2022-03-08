@@ -161,6 +161,7 @@ piranha.dropzone = new function () {
             previewsContainer: selector + " .media-list",
             previewTemplate: document.querySelector( "#media-upload-template").innerHTML,
             uploadMultiple: true,
+            timeout: 600000,
             init: function () {
                 var self = this;
 
@@ -204,7 +205,15 @@ piranha.dropzone = new function () {
 
         var config = Object.assign(defaultOptions, options);
 
-        return new Dropzone(selector + " form", config);
+        var dz =  new Dropzone(selector + " form", config);
+        dz.on("sending", function (file, xhr, formData) {
+            /*Called just before each file is sent*/
+            xhr.ontimeout = (() => {
+                /*Execute on case of timeout only*/
+                console.log('Server Timeout');
+            });
+        });
+        return dz;
     }
 };
 /*global
