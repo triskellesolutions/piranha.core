@@ -5,6 +5,8 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <Description>Manager panel for Piranha CMS for AspNetCore</Description>
+    <RepositoryUrl>https://github.com/triskellesolutions/piranha.core</RepositoryUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">

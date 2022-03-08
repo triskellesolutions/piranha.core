@@ -353,9 +353,9 @@ gulp.task("min:js", function (done) {
             .pipe(vueCompile())
             .pipe(concat(output + "js/" + js[n].name))
             .pipe(gulp.dest("."))
-            .pipe(uglify().on('error', function (e) {
-                console.log(e);
-            }))
+            //.pipe(uglify().on('error', function (e) {
+            //    console.log(e);
+            //}))
             .pipe(rename({
                 suffix: ".min"
             }))
