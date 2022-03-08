@@ -18,6 +18,7 @@ var path = require('path'),
     through2 = require('through2'),
     rtlcss = require('gulp-rtlcss');
 
+
 function vueCompile() {
     return through2.obj(function (file, _, callback) {
         var relativeFile = path.relative(file.cwd, file.path);
@@ -92,7 +93,7 @@ function vueCompile() {
 
 // Gulp build script
 var gulp = require("gulp"),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
     rename = require("gulp-rename"),
@@ -368,3 +369,4 @@ gulp.task("min:js", function (done) {
 //
 gulp.task("serve", gulp.parallel(["min:css", "min:js", "rtl:min:css"]));
 gulp.task("default", gulp.series("serve"));
+

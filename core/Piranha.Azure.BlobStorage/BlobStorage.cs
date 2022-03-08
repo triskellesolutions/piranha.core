@@ -12,6 +12,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Azure.Core;
+using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Piranha.Models;
@@ -132,9 +133,16 @@ namespace Piranha.Azure
         {
             var blob = _blobContainerClient.GetBlobClient(GetResourceName(media, filename));
 
-            var blobHttpHeader = new BlobHttpHeaders {ContentType = contentType};
-
-            await blob.UploadAsync(stream, blobHttpHeader);
+            var options = new BlobUploadOptions
+            {
+                TransferOptions = new StorageTransferOptions
+                {
+                    MaximumTransferSize = 4 * 1024 * 1024,
+                    InitialTransferSize = 4 * 1024 * 1024
+                },
+                HttpHeaders = new BlobHttpHeaders { ContentType = contentType }
+            };
+            await blob.UploadAsync(stream, options);
 
             return blob.Uri.AbsoluteUri;
         }
