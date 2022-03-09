@@ -5,6 +5,7 @@
     <RootNamespace>Piranha.AspNetCore</RootNamespace>
     <NoWarn>$(NoWarn);1591</NoWarn>
     <Description>Piranha CMS simple security provider for AspNetCore</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">

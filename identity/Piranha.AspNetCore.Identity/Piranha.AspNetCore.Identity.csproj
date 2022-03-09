@@ -5,6 +5,7 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <Description>Piranha CMS security provider for AspNetCore Identity</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
